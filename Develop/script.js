@@ -24,17 +24,17 @@
 //$("#6a").text(unixFormat);
 //-------------------------------------------------------------------Objects-------------------------------------------------------------------------------------------------------
 
-const wrk_times = [
+var wrk_times = [
 
-    {"09": "9AM",},
-    {"10": "10AM",},
-    {"11": "11AM",},
-    {"12": "12PM",},
-    {"13": "1PM",},
-    {"14": "2PM",},
-    {"15": "3PM",},
-    {"16": "4PM",},
-    {"17": "5PM",}
+    {"09": "asda",},
+    {"10": "cxccccc",},
+    {"11": "bbbbbbbb",},
+    {"12": "",},
+    {"13": "",},
+    {"14": "",},
+    {"15": "",},
+    {"16": "",},
+    {"17": "",}
 
 ];
 
@@ -43,18 +43,22 @@ var date_blocks = $('.container');
 var current_hour = moment().format("H");
 var i = 0;
 
+
 var today_date = moment().format("dddd, MMMM Do") ;
 $('#currentDay').text(today_date);
 
 //-------------------------------------------------------------------functions-------------------------------------------------------------------------------------------------------
 
-
+function save(){
+    console.log("hello" + i);
+};
 
 function create_table(){
     
     for (i = 0; i < wrk_times.length; i++){
 
         var time = Object.keys(wrk_times[i]);
+        var value = Object.values(wrk_times[i]);
         var BG = moment(time, "HHmm").format("HH");
 
         div1 = document.createElement("div");
@@ -65,6 +69,7 @@ function create_table(){
 
         text_area = document.createElement("textarea");
         text_area.classList.add("form-control");
+        text_area.textContent = value;
 
         span1 = document.createElement("span");
         span1.classList.add("input-group-text");
@@ -106,13 +111,14 @@ function create_table(){
 
 };
 
-function color_update(){
+function eventsss(){
+    for (i = 0; i < wrk_times.length; i++){
+        var The_div = document.getElementById(i);
 
+        The_div.addEventListener('click', save);
+    };
 };
 
-function save(){
-
-};
 
 
 
@@ -143,7 +149,7 @@ function save(){
 function init(){
 
     create_table()
-
+    eventsss()
 
 
 
