@@ -2,7 +2,7 @@
 
 As requested I have used the provided code and created a Quiz. If you look at the early commit you may see me change from hardcoding the HTML to then changing to JAVA script only to challenge myself a bit to finish, which is What I present to you.
 
-![Website Preview](Assets/IMAGE OF THE SCHEDULAR.png)
+![Website Preview](Assets/image.png)
 
 
 
