@@ -26,9 +26,9 @@
 
 var wrk_times = [
 
-    {"09": "asda",},
-    {"10": "cxccccc",},
-    {"11": "bbbbbbbb",},
+    {"09": "",},
+    {"10": "",},
+    {"11": "",},
     {"12": "",},
     {"13": "",},
     {"14": "",},
@@ -42,6 +42,8 @@ var wrk_times = [
 var date_blocks = $('.container');
 var current_hour = moment().format("H");
 var i = 0;
+var target_id = "";
+var value = "";
 
 
 var today_date = moment().format("dddd, MMMM Do") ;
@@ -69,7 +71,8 @@ function create_table(){
 
         text_area = document.createElement("textarea");
         text_area.classList.add("form-control");
-        text_area.textContent = value;
+        text_area.id = "ID" + time;
+        text_area.textContent = localStorage.getItem(time);
 
         span1 = document.createElement("span");
         span1.classList.add("input-group-text");
@@ -79,7 +82,8 @@ function create_table(){
         div3.id = i;
 
         span2 = document.createElement("span");
-        span2.classList.add("input-group-text");
+        span2.classList.add("input-group-text", "save-button");
+        span2.id = time;
         
         i_tag = document.createElement("i");
         i_tag.classList.add("far", "fa-save");
@@ -111,16 +115,20 @@ function create_table(){
 
 };
 
-function eventsss(){
-    for (i = 0; i < wrk_times.length; i++){
-        var The_div = document.getElementById(i);
 
-        The_div.addEventListener('click', save);
-    };
-};
-
-
-
+$(function(){
+    create_table()
+    $(".save-button").click(function(event){
+        console.log(event.target.id);
+        target_id = event.target.id;
+        console.log(target_id);
+        var text = "ID"+target_id;
+        value = document.getElementById(text).value; 
+        console.log(text);
+        console.log(value);
+        localStorage.setItem(target_id, value);
+    });
+});
 
 
 
@@ -146,20 +154,10 @@ function eventsss(){
 
 //-------------------------------------------------------------------Main-------------------------------------------------------------------------------------------------------
 
-function init(){
-
-    create_table()
-    eventsss()
 
 
 
 
-
-
-};
-
-
-init()
 
 
 
